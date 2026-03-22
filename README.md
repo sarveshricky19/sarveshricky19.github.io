@@ -1,4 +1,4 @@
-<![CDATA[# 🌐 Sarvesh S — Portfolio
+# 🌐 Sarvesh S — Portfolio
 
 A modern, responsive developer portfolio showcasing my work as a **Backend Software Engineer**. Built with vanilla HTML, CSS, and JavaScript — no frameworks, no build tools.
 
@@ -90,4 +90,3 @@ No dependencies. No build step. Just open `index.html`.
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
-]]>
