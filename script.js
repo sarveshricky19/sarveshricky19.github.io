@@ -172,6 +172,44 @@ function animateCounters() {
 }
 
 // ========================
+// SKILL FILTERS
+// ========================
+function initSkillFilters() {
+  const buttons = document.querySelectorAll('[data-skill-filter]');
+  const cards = document.querySelectorAll('[data-skill-group]');
+  const status = document.getElementById('skill-filter-status');
+  if (!buttons.length || !cards.length) return;
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.dataset.skillFilter;
+      let shown = 0;
+      cards.forEach(card => {
+        const visible = filter === 'all' || card.dataset.skillGroup === filter;
+        card.hidden = !visible;
+        if (visible) {
+          shown += 1;
+          card.classList.add('visible');
+        }
+      });
+
+      buttons.forEach(item => {
+        const active = item === button;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', String(active));
+      });
+
+      if (status) {
+        const label = button.textContent.trim();
+        status.textContent = filter === 'all'
+          ? `Showing all ${shown} skill groups`
+          : `Showing ${shown} ${label.toLowerCase()} group${shown === 1 ? '' : 's'}`;
+      }
+    });
+  });
+}
+
+// ========================
 // SUBSTACK AND MEDIUM FEEDS
 // ========================
 async function fetchArticles({ gridId, loadingId, feedUrl, profileUrl, platform }) {
@@ -318,11 +356,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const typedEl = document.querySelector('.typed-text');
   if (typedEl) {
     new TypeWriter(typedEl, [
-      'Backend Engineer',
-      'API Gateway Specialist',
-      'Microservices Architect',
-      'Node.js Developer',
-      'System Designer'
+      'API gateways & integrations',
+      'queues & event-driven systems',
+      'testing & production reliability'
     ], 2000);
   }
 
@@ -330,6 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initSmoothScroll();
   animateCounters();
+  initSkillFilters();
   fetchArticles({
     gridId: 'substack-grid',
     loadingId: 'substack-loading',
