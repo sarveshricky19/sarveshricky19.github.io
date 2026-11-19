@@ -172,113 +172,135 @@ function animateCounters() {
 }
 
 // ========================
-// MEDIUM BLOG FEED
+// SUBSTACK AND MEDIUM FEEDS
 // ========================
-async function fetchMediumArticles() {
-  const grid = document.getElementById('blog-grid');
-  const loading = document.getElementById('blog-loading');
-  const MEDIUM_USER = '@sarvesh19ricky';
-  const RSS_URL = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/${MEDIUM_USER}`;
+async function fetchArticles({ gridId, loadingId, feedUrl, profileUrl, platform }) {
+  const grid = document.getElementById(gridId);
+  const loading = document.getElementById(loadingId);
+  if (!grid || !loading) return;
 
+  const rssUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`;
   try {
-    const response = await fetch(RSS_URL);
+    const response = await fetch(rssUrl);
+    if (!response.ok) throw new Error(`Feed request failed: ${response.status}`);
     const data = await response.json();
+    if (data.status !== 'ok' || !data.items?.length) throw new Error('No posts found');
 
-    if (data.status !== 'ok' || !data.items || data.items.length === 0) {
-      throw new Error('No articles found');
-    }
-
-    // Remove loading state
-    if (loading) loading.remove();
-
-    // Render articles (max 6)
-    const articles = data.items.slice(0, 6);
+    loading.remove();
+    const articles = data.items.slice(0, 3);
     articles.forEach((article, index) => {
-      const card = createBlogCard(article, index);
+      const card = createBlogCard(article, index, platform);
       grid.appendChild(card);
     });
-
   } catch (error) {
-    console.error('Failed to fetch Medium articles:', error);
-    if (loading) {
-      loading.innerHTML = `
-        <div class="blog-error">
-          <i class="fas fa-exclamation-circle"></i>
-          <p>Couldn't load articles right now.</p>
-          <a href="https://medium.com/${MEDIUM_USER}" target="_blank" class="btn-primary" style="margin-top:16px;">
-            <i class="fab fa-medium-m"></i> Visit Medium Profile
-          </a>
-        </div>
-      `;
-    }
+    console.error(`Failed to fetch ${platform} posts:`, error);
+    loading.innerHTML = '';
+    const errorMessage = document.createElement('div');
+    errorMessage.className = 'blog-error';
+    const message = document.createElement('p');
+    message.textContent = `Couldn't load ${platform} posts right now.`;
+    const link = document.createElement('a');
+    link.href = profileUrl;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.className = 'btn-primary';
+    link.style.marginTop = '16px';
+    link.textContent = `Visit ${platform}`;
+    errorMessage.append(message, link);
+    loading.appendChild(errorMessage);
   }
 }
 
-function createBlogCard(article, index) {
+function createBlogCard(article, index, platform) {
   const card = document.createElement('a');
   card.href = article.link;
   card.target = '_blank';
   card.rel = 'noopener noreferrer';
   card.className = `blog-card reveal reveal-delay-${(index % 3) + 1}`;
 
-  // Extract thumbnail from content or use a fallback
-  let thumbnail = article.thumbnail;
-  if (!thumbnail || thumbnail === '') {
-    const imgMatch = article.description?.match(/<img[^>]+src="([^">]+)"/);
-    thumbnail = imgMatch ? imgMatch[1] : '';
-  }
-
-  // Calculate read time (~200 words/min)
-  const textContent = article.description?.replace(/<[^>]+>/g, '') || '';
+  const parser = new DOMParser();
+  const articleHtml = parser.parseFromString(article.description || '', 'text/html');
+  const textContent = (articleHtml.body.textContent || '').replace(/\s+/g, ' ').trim();
+  const thumbnail = article.thumbnail || articleHtml.querySelector('img')?.src || '';
   const wordCount = textContent.split(/\s+/).length;
   const readTime = Math.max(1, Math.ceil(wordCount / 200));
-
-  // Format date
   const pubDate = new Date(article.pubDate);
-  const dateStr = pubDate.toLocaleDateString('en-US', {
+  const dateStr = Number.isNaN(pubDate.getTime()) ? '' : pubDate.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric'
   });
-
-  // Get categories/tags
   const tags = (article.categories || []).slice(0, 3);
-
-  // Create excerpt (strip HTML, limit to ~120 chars)
   let excerpt = textContent.substring(0, 140);
   const lastSpace = excerpt.lastIndexOf(' ');
   if (lastSpace > 100) excerpt = excerpt.substring(0, lastSpace);
-  excerpt += '…';
+  if (textContent.length > excerpt.length) excerpt += '…';
 
-  card.innerHTML = `
-    ${thumbnail ? `
-      <div class="blog-card-image">
-        <img src="${thumbnail}" alt="${article.title}" loading="lazy">
-        <div class="blog-card-overlay"></div>
-      </div>
-    ` : `
-      <div class="blog-card-image blog-card-image-placeholder">
-        <i class="fas fa-code"></i>
-        <div class="blog-card-overlay"></div>
-      </div>
-    `}
-    <div class="blog-card-body">
-      <div class="blog-card-meta">
-        <span class="blog-card-date"><i class="far fa-calendar-alt"></i> ${dateStr}</span>
-        <span class="blog-card-readtime"><i class="far fa-clock"></i> ${readTime} min read</span>
-      </div>
-      <h3 class="blog-card-title">${article.title}</h3>
-      <p class="blog-card-excerpt">${excerpt}</p>
-      ${tags.length > 0 ? `
-        <div class="blog-card-tags">
-          ${tags.map(tag => `<span class="blog-tag">${tag}</span>`).join('')}
-        </div>
-      ` : ''}
-      <div class="blog-card-footer">
-        <span class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></span>
-      </div>
-    </div>
-  `;
+  if (thumbnail) {
+    const imageWrap = document.createElement('div');
+    imageWrap.className = 'blog-card-image';
+    const image = document.createElement('img');
+    image.src = thumbnail;
+    image.alt = '';
+    image.loading = 'lazy';
+    imageWrap.appendChild(image);
+    const overlay = document.createElement('div');
+    overlay.className = 'blog-card-overlay';
+    imageWrap.appendChild(overlay);
+    card.appendChild(imageWrap);
+  } else {
+    const placeholder = document.createElement('div');
+    placeholder.className = 'blog-card-image blog-card-image-placeholder';
+    const icon = document.createElement('i');
+    icon.className = 'fas fa-pen-nib';
+    placeholder.appendChild(icon);
+    card.appendChild(placeholder);
+  }
+
+  const body = document.createElement('div');
+  body.className = 'blog-card-body';
+  const meta = document.createElement('div');
+  meta.className = 'blog-card-meta';
+  if (dateStr) {
+    const date = document.createElement('span');
+    date.className = 'blog-card-date';
+    date.textContent = dateStr;
+    meta.appendChild(date);
+  }
+  const time = document.createElement('span');
+  time.className = 'blog-card-readtime';
+  time.textContent = `${readTime} min read`;
+  meta.appendChild(time);
+  body.appendChild(meta);
+
+  const title = document.createElement('h3');
+  title.className = 'blog-card-title';
+  title.textContent = article.title || 'Untitled post';
+  body.appendChild(title);
+  const excerptEl = document.createElement('p');
+  excerptEl.className = 'blog-card-excerpt';
+  excerptEl.textContent = excerpt;
+  body.appendChild(excerptEl);
+
+  if (tags.length) {
+    const tagWrap = document.createElement('div');
+    tagWrap.className = 'blog-card-tags';
+    tags.forEach(tag => {
+      const tagEl = document.createElement('span');
+      tagEl.className = 'blog-tag';
+      tagEl.textContent = tag;
+      tagWrap.appendChild(tagEl);
+    });
+    body.appendChild(tagWrap);
+  }
+  const footer = document.createElement('div');
+  footer.className = 'blog-card-footer';
+  const readMore = document.createElement('span');
+  readMore.className = 'blog-read-more';
+  readMore.textContent = `Read on ${platform} →`;
+  footer.appendChild(readMore);
+  body.appendChild(footer);
+  card.appendChild(body);
 
   // Trigger reveal after a small delay
   setTimeout(() => {
@@ -308,5 +330,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initSmoothScroll();
   animateCounters();
-  fetchMediumArticles();
+  fetchArticles({
+    gridId: 'substack-grid',
+    loadingId: 'substack-loading',
+    feedUrl: 'https://isarvesh19.substack.com/feed',
+    profileUrl: 'https://open.substack.com/pub/isarvesh19',
+    platform: 'Substack'
+  });
+  fetchArticles({
+    gridId: 'medium-grid',
+    loadingId: 'medium-loading',
+    feedUrl: 'https://medium.com/feed/@sarvesh19ricky',
+    profileUrl: 'https://medium.com/@sarvesh19ricky',
+    platform: 'Medium'
+  });
 });

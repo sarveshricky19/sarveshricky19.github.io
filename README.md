@@ -12,8 +12,8 @@ A modern, responsive developer portfolio showcasing my work as a **Backend Softw
 |---|---|
 | **Typing Animation** | Rotating roles (Backend Engineer, API Gateway Specialist, etc.) |
 | **Scroll Reveal** | Elements animate into view using Intersection Observer |
-| **Counter Animation** | Stats (3+ years, 10K+ invoices, 30% perf boost) count up on scroll |
-| **Dynamic Blog Feed** | Pulls latest articles from Medium via `rss2json` API |
+| **Counter Animation** | Stats (4 years, 10K+ invoices, 30% perf boost) count up on scroll |
+| **Live Writing Feeds** | Pulls recent Substack posts and Medium articles from RSS via `rss2json` |
 | **Responsive Navbar** | Sticky header with mobile hamburger menu & active section highlighting |
 | **Smooth Scrolling** | Anchor links smoothly scroll to target sections |
 | **Glassmorphism UI** | Modern frosted-glass cards with gradient accents |
@@ -38,11 +38,11 @@ portfolio/
 
 - **Hero** — Intro with typing animation, CTA buttons, social links, and avatar with floating badges
 - **About** — Bio + animated stat counters
-- **Skills** — Categorised tech stack (Languages, Backend, Frontend, Databases, Infrastructure, Tools)
-- **Experience** — Timeline cards for Yappes (SDE-2) and Byju's (SDE Full Stack)
+- **Skills** — Categorised tech stack including Java, Python, RabbitMQ, BullMQ, TDD, and load testing
+- **Experience** — Timeline cards for Delightree, Yappes (SDE-2), and BYJU'S (SDE Full Stack)
 - **Education** — MS in Software Dev (Scaler) & BE in CS (KCT)
-- **Blog** — Auto-fetched Medium articles with thumbnails, read time, tags, and error fallback
-- **Contact** — Email, phone, location + social cards (LinkedIn, GitHub, Instagram, Spotify, Fiverr, Medium)
+- **Writing** — Auto-fetched Substack posts and Medium articles with thumbnails, read time, tags, and error fallback
+- **Contact** — Email, phone, location + social cards (LinkedIn, GitHub, Instagram, X, Substack, Spotify, Fiverr, Medium)
 
 ---
 
@@ -83,6 +83,9 @@ No dependencies. No build step. Just open `index.html`.
 - **LinkedIn:** [sarvesh1999](https://www.linkedin.com/in/sarvesh1999)
 - **GitHub:** [sarveshricky19](https://github.com/sarveshricky19)
 - **Medium:** [@sarvesh19ricky](https://medium.com/@sarvesh19ricky)
+- **Substack:** [isarvesh19](https://open.substack.com/pub/isarvesh19)
+- **X:** [@_Sarvesh19](https://x.com/_Sarvesh19)
+- **Instagram:** [@sarvesh.19](https://www.instagram.com/sarvesh.19)
 - **Instagram:** [@sarvesh.19](https://www.instagram.com/sarvesh.19)
 
 ---
