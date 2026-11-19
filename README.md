@@ -10,13 +10,13 @@ A modern, responsive developer portfolio showcasing my work as a **Backend Softw
 
 | Feature | Details |
 |---|---|
-| **Typing Animation** | Rotates through API gateways, event-driven systems, and production reliability |
+| **Gateway walkthrough** | Click through rate limits, load balancing, circuit breakers, caching, and database sharding |
 | **Scroll Reveal** | Elements animate into view using Intersection Observer |
-| **Counter Animation** | Approximate experience, 10K+ daily transactions, and a 30% gateway throughput gain count up on scroll |
+| **Counter Animation** | Approximate experience and 10K+ daily transactions count up on scroll |
 | **Live Writing Feeds** | Pulls recent Substack posts and Medium articles from RSS via `rss2json` |
 | **Responsive Navbar** | Sticky header with mobile hamburger menu & active section highlighting |
 | **Smooth Scrolling** | Anchor links smoothly scroll to target sections |
-| **Skill Filters** | Focus the skills view by languages, APIs, data, or engineering quality |
+| **Skill Filters** | Focus the skills view by languages, APIs, data, delivery, or AI tools |
 | **Visual design** | Minimal editorial layout with warm neutrals and a restrained green accent |
 
 ---
@@ -27,7 +27,7 @@ A modern, responsive developer portfolio showcasing my work as a **Backend Softw
 portfolio/
 ├── index.html    # Single-page markup (Hero → About → Skills → Experience → Education → Projects → Writing → Contact)
 ├── style.css     # Full design system — grid layout, animations, responsive breakpoints
-├── script.js     # Typing effect, skill filters, nav logic, counters, Substack and Medium feeds
+├── script.js     # Gateway walkthrough, skill filters, nav logic, counters, Substack and Medium feeds
 ├── avatar.png    # Profile photo
 ├── Sarvesh_S_CV.pdf # Downloadable CV
 └── README.md
@@ -37,10 +37,10 @@ portfolio/
 
 ## 🧩 Sections
 
-- **Hero** — Intro with typing animation, CTA buttons, social links, and avatar with floating badges
+- **Hero** — Personal introduction, CV download, project link, and social profiles
 - **About** — Bio + animated stat counters
-- **Skills** — Filterable groups for languages, APIs, data and queues, delivery, and reliability
-- **Experience** — Timeline for Delightree, Yappes, Adobe, and BYJU'S
+- **Skills** — Filterable groups for languages, APIs, data and queues, delivery, AI tools, and reliability
+- **Experience** — Timeline for Delightree, Yappes, and BYJU'S
 - **Education** — MS in Software Dev (Scaler) & BE in CS (KCT)
 - **Writing** — Auto-fetched Substack posts and Medium articles with thumbnails, read time, tags, and error fallback
 - **Contact** — Email, phone, location + social cards (LinkedIn, GitHub, Instagram, X, Substack, Spotify, Fiverr, Medium)

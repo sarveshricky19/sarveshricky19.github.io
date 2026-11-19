@@ -1,49 +1,4 @@
 // ========================
-// TYPING ANIMATION
-// ========================
-class TypeWriter {
-  constructor(element, words, wait = 2000) {
-    this.element = element;
-    this.words = words;
-    this.wait = parseInt(wait, 10);
-    this.wordIndex = 0;
-    this.txt = '';
-    this.isDeleting = false;
-    this.type();
-  }
-
-  type() {
-    const current = this.wordIndex % this.words.length;
-    const fullTxt = this.words[current];
-
-    if (this.isDeleting) {
-      this.txt = fullTxt.substring(0, this.txt.length - 1);
-    } else {
-      this.txt = fullTxt.substring(0, this.txt.length + 1);
-    }
-
-    this.element.textContent = this.txt;
-
-    let typeSpeed = 80;
-
-    if (this.isDeleting) {
-      typeSpeed /= 2;
-    }
-
-    if (!this.isDeleting && this.txt === fullTxt) {
-      typeSpeed = this.wait;
-      this.isDeleting = true;
-    } else if (this.isDeleting && this.txt === '') {
-      this.isDeleting = false;
-      this.wordIndex++;
-      typeSpeed = 400;
-    }
-
-    setTimeout(() => this.type(), typeSpeed);
-  }
-}
-
-// ========================
 // NAVIGATION
 // ========================
 function initNavigation() {
@@ -202,9 +157,36 @@ function initSkillFilters() {
       if (status) {
         const label = button.textContent.trim();
         status.textContent = filter === 'all'
-          ? `Showing all ${shown} skill groups`
-          : `Showing ${shown} ${label.toLowerCase()} group${shown === 1 ? '' : 's'}`;
+          ? `Showing all ${shown} skill cards`
+          : `Showing ${shown} group${shown === 1 ? '' : 's'} for ${label}`;
       }
+    });
+  });
+}
+
+// ========================
+// GATEWAY WALKTHROUGH
+// ========================
+function initGatewayWalkthrough() {
+  const buttons = document.querySelectorAll('[data-gateway-choice]');
+  const detail = document.getElementById('gateway-choice-detail');
+  const explanations = {
+    limits: "Set a ceiling per client so a traffic spike—or one noisy tenant—doesn't consume all the gateway's capacity.",
+    balance: "Distribute requests across available instances so work is shared and traffic can keep moving as capacity changes.",
+    breakers: "Stop repeating calls to a dependency that is already failing; give it room to recover before trying again.",
+    cache: "Keep frequently requested data close to the API so the same read does not have to travel back to the database every time.",
+    sharding: "Partition a growing dataset across databases when one database can no longer comfortably serve the workload."
+  };
+  if (!buttons.length || !detail) return;
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      buttons.forEach(item => {
+        const active = item === button;
+        item.classList.toggle('is-active', active);
+        item.setAttribute('aria-pressed', String(active));
+      });
+      detail.textContent = explanations[button.dataset.gatewayChoice];
     });
   });
 }
@@ -352,21 +334,12 @@ function createBlogCard(article, index, platform) {
 // INITIALIZE
 // ========================
 document.addEventListener('DOMContentLoaded', () => {
-  // Typing animation
-  const typedEl = document.querySelector('.typed-text');
-  if (typedEl) {
-    new TypeWriter(typedEl, [
-      'API gateways & integrations',
-      'queues & event-driven systems',
-      'testing & production reliability'
-    ], 2000);
-  }
-
   initNavigation();
   initScrollReveal();
   initSmoothScroll();
   animateCounters();
   initSkillFilters();
+  initGatewayWalkthrough();
   fetchArticles({
     gridId: 'substack-grid',
     loadingId: 'substack-loading',

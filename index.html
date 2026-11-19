@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sarvesh S | Backend Software Engineer</title>
-  <meta name="description" content="Sarvesh S is a backend software engineer working on API platforms, service integrations, and production reliability.">
-  <meta name="keywords" content="Sarvesh S, Backend Engineer, Node.js, Python, API Gateway, GraphQL, Microservices, RabbitMQ, Redis">
+  <meta name="description" content="Sarvesh S is a backend software engineer working on API platforms, finance systems, data pipelines, and search.">
+  <meta name="keywords" content="Sarvesh S, Backend Engineer, Node.js, Python, Java, API Gateway, GraphQL, BigQuery, RAG, RabbitMQ">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -50,22 +50,23 @@
           BACKEND ENGINEER <span aria-hidden="true">/</span> BENGALURU, INDIA
         </div>
         <h1>
-          I build the<br>
-          <span class="name">backend layer.</span>
+          I like solving<br>
+          <span class="name">the hard backend bits.</span>
         </h1>
         <div class="hero-role">
-          <span class="typed-text"></span><span class="cursor"></span>
+          API platforms <span aria-hidden="true">·</span> finance workflows <span aria-hidden="true">·</span> production systems
         </div>
         <p class="hero-description">
-          I'm Sarvesh — a backend engineer working across API gateways, service integrations,
-          queues, and the unglamorous details that keep production steady.
+          I'm Sarvesh. I've worked on API gateways, finance systems, and analytics tools. I enjoy
+          following a problem all the way through: the integration, the data, the failure, and the
+          fix that stops it coming back.
         </p>
         <div class="hero-buttons">
           <a href="Sarvesh_S_CV.pdf" class="btn-primary" download="Sarvesh_S_CV.pdf" aria-label="Download Sarvesh S's CV as a PDF">
-            <i class="fas fa-download"></i> Download CV <span class="button-note">PDF · 3 pages</span>
+            <i class="fas fa-download"></i> Download CV <span class="button-note">PDF · 2 pages</span>
           </a>
-          <a href="#contact" class="btn-secondary">
-            <i class="fas fa-paper-plane"></i> Get In Touch
+          <a href="#projects" class="btn-secondary">
+            <i class="fas fa-arrow-down"></i> See what I've built
           </a>
         </div>
         <div class="hero-socials">
@@ -103,11 +104,6 @@
             <div class="badge-value">~4 yrs</div>
             <div class="badge-text">Backend engineering</div>
           </div>
-          <div class="floating-badge floating-badge-2">
-            <div class="badge-icon">🚀</div>
-            <div class="badge-value">+30%</div>
-            <div class="badge-text">Gateway throughput</div>
-          </div>
         </div>
       </div>
     </div>
@@ -119,41 +115,51 @@
   <section class="about" id="about">
     <div class="container">
       <div class="section-header reveal">
-        <div class="section-label">About Me</div>
-        <h2>How I <span class="gradient-text">work</span></h2>
-        <p>Backend engineering from API design through the production fix</p>
+        <div class="section-label">A little about how I work</div>
+        <h2>Stay close to <span class="gradient-text">the problem</span></h2>
+        <p>From the first request to the production fix</p>
       </div>
       <div class="about-grid">
         <div class="about-text reveal">
-          <h3>Systems, services, and the seams between them.</h3>
+          <h3>I like knowing what happens after the code ships.</h3>
           <p>
-            I work mostly in <strong>Node.js</strong> across API gateways, GraphQL and REST services,
-            integrations, and asynchronous jobs. At Yappes, I helped improve gateway throughput by
-            30%; across teams, I have used <strong>Python</strong>, <strong>RabbitMQ</strong>,
-            <strong>BullMQ</strong>, and Redis to move work between services.
+            I'm happiest when I can follow a problem end to end: why an API is slow, why a payment
+            didn't reconcile, or why a support issue keeps coming back. I've moved between building
+            features and supporting production, and both have shaped how I work.
           </p>
           <p>
-            I like work that makes a service easier to trust: tests before changes, load tests when
-            throughput matters, clear signals in production, and small fixes that prevent the same
-            incident returning. I have worked with MongoDB, PostgreSQL, MySQL, Elasticsearch, Docker,
-            Kubernetes, and AWS.
+            At Yappes, I worked on the controls that help an API gateway stay useful under pressure.
+            At BYJU'S, I worked on finance workflows where invoices, credit notes, and payments had to
+            line up. At Delightree, I built analytics pipelines and an AI search feature using RAG.
           </p>
           <p>
-            My background also includes enterprise support at Adobe and full-stack product work at BYJU'S.
+            I care about leaving a service easier to understand than I found it: tests around the
+            behaviour, useful logs when something breaks, and a fix that makes the next incident less likely.
           </p>
         </div>
         <div class="about-stats reveal reveal-delay-2">
           <div class="stat-card">
             <div class="stat-number" data-count="4" data-suffix=" yrs">0</div>
-            <div class="stat-label">Nearly four years in backend engineering</div>
+            <div class="stat-label">Nearly four years building software</div>
           </div>
           <div class="stat-card">
             <div class="stat-number" data-count="10" data-suffix="K+">0</div>
-            <div class="stat-label">Daily transactions supported</div>
+            <div class="stat-label">Transactions in a daily batch</div>
           </div>
-          <div class="stat-card">
-            <div class="stat-number" data-count="30" data-suffix="%">0</div>
-            <div class="stat-label">Gateway throughput gain</div>
+          <div class="stat-card gateway-toolkit" id="gateway-toolkit">
+            <div class="gateway-toolkit-heading">
+              <span class="gateway-toolkit-kicker">YAPPES · API GATEWAY</span>
+              <h3>What does the system need?</h3>
+              <p>I worked on each of these controls. Pick one to see the job it does.</p>
+            </div>
+            <div class="gateway-choice-list" role="group" aria-label="Explore API gateway patterns">
+              <button class="gateway-choice is-active" type="button" data-gateway-choice="limits" aria-pressed="true">Rate limits</button>
+              <button class="gateway-choice" type="button" data-gateway-choice="balance" aria-pressed="false">Load balancing</button>
+              <button class="gateway-choice" type="button" data-gateway-choice="breakers" aria-pressed="false">Circuit breakers</button>
+              <button class="gateway-choice" type="button" data-gateway-choice="cache" aria-pressed="false">Caching</button>
+              <button class="gateway-choice" type="button" data-gateway-choice="sharding" aria-pressed="false">DB sharding</button>
+            </div>
+            <p class="gateway-choice-detail" id="gateway-choice-detail" aria-live="polite">Set a ceiling per client so a traffic spike—or one noisy tenant—doesn't consume all the gateway's capacity.</p>
           </div>
         </div>
       </div>
@@ -168,7 +174,7 @@
       <div class="section-header reveal">
         <div class="section-label">Technical toolkit</div>
         <h2>Tools I <span class="gradient-text">reach for</span></h2>
-        <p>Filter by the kind of work. These are grounded in my CV and day-to-day experience.</p>
+        <p>I move between these areas. Filter the list to the kind of work you want to see.</p>
       </div>
       <div class="skill-filters" role="group" aria-label="Filter skills by category">
         <button class="skill-filter is-active" type="button" data-skill-filter="all" aria-pressed="true">Everything</button>
@@ -176,13 +182,14 @@
         <button class="skill-filter" type="button" data-skill-filter="services" aria-pressed="false">Services & APIs</button>
         <button class="skill-filter" type="button" data-skill-filter="data" aria-pressed="false">Data & queues</button>
         <button class="skill-filter" type="button" data-skill-filter="delivery" aria-pressed="false">Delivery & quality</button>
+        <button class="skill-filter" type="button" data-skill-filter="ai" aria-pressed="false">AI tools</button>
       </div>
-      <p class="skill-filter-status" id="skill-filter-status" aria-live="polite">Showing all 6 skill groups</p>
+      <p class="skill-filter-status" id="skill-filter-status" aria-live="polite">Showing all 7 skill cards</p>
       <div class="skills-grid">
         <div class="skill-category reveal reveal-delay-1" data-skill-group="languages">
           <div class="skill-category-topline"><span>01</span><span class="skill-category-icon">{ }</span></div>
           <h3>Languages</h3>
-          <p class="skill-category-note">The main tools I use to shape application behaviour.</p>
+          <p class="skill-category-note">JavaScript and Node.js are at the centre of my backend work.</p>
           <div class="skill-tags">
             <span class="skill-tag">JavaScript</span><span class="skill-tag">TypeScript</span><span class="skill-tag">Python</span><span class="skill-tag">Java</span>
           </div>
@@ -190,9 +197,9 @@
         <div class="skill-category reveal reveal-delay-2" data-skill-group="services">
           <div class="skill-category-topline"><span>02</span><span class="skill-category-icon">↗</span></div>
           <h3>Services & APIs</h3>
-          <p class="skill-category-note">Routing, contracts, and connections across systems.</p>
+          <p class="skill-category-note">Gateway traffic, service contracts, and external integrations.</p>
           <div class="skill-tags">
-            <span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span><span class="skill-tag">REST</span><span class="skill-tag">GraphQL</span><span class="skill-tag">SOAP</span><span class="skill-tag">WebSockets</span><span class="skill-tag">API Gateway</span><span class="skill-tag">Microservices</span>
+            <span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span><span class="skill-tag">REST</span><span class="skill-tag">GraphQL</span><span class="skill-tag">SOAP</span><span class="skill-tag">WebSockets</span><span class="skill-tag">API Gateway</span><span class="skill-tag">Microservices</span><span class="skill-tag">Rate limiting</span><span class="skill-tag">Load balancing</span><span class="skill-tag">RAG search</span>
           </div>
         </div>
         <div class="skill-category reveal reveal-delay-3" data-skill-group="services">
@@ -206,25 +213,33 @@
         <div class="skill-category reveal reveal-delay-1" data-skill-group="data">
           <div class="skill-category-topline"><span>04</span><span class="skill-category-icon">◫</span></div>
           <h3>Data & queues</h3>
-          <p class="skill-category-note">Persistent data, fast paths, and work that runs later.</p>
+          <p class="skill-category-note">Queries, analytics, shared cache, and asynchronous work.</p>
           <div class="skill-tags">
-            <span class="skill-tag">MongoDB</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MySQL</span><span class="skill-tag">Redis</span><span class="skill-tag">Elasticsearch</span><span class="skill-tag">RabbitMQ</span><span class="skill-tag">BullMQ</span><span class="skill-tag">Caching</span>
+            <span class="skill-tag">MongoDB</span><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MySQL</span><span class="skill-tag">Redis</span><span class="skill-tag">Elasticsearch</span><span class="skill-tag">BigQuery</span><span class="skill-tag">RabbitMQ</span><span class="skill-tag">BullMQ</span><span class="skill-tag">Caching</span><span class="skill-tag">Database sharding</span><span class="skill-tag">Snappy / zlib</span>
           </div>
         </div>
         <div class="skill-category reveal reveal-delay-2" data-skill-group="delivery">
           <div class="skill-category-topline"><span>05</span><span class="skill-category-icon">⌘</span></div>
           <h3>Delivery & runtime</h3>
-          <p class="skill-category-note">Build, ship, observe, and troubleshoot services.</p>
+          <p class="skill-category-note">Tools I've used to ship and operate backend services.</p>
           <div class="skill-tags">
-            <span class="skill-tag">AWS</span><span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span><span class="skill-tag">Linux</span><span class="skill-tag">CI/CD</span><span class="skill-tag">GitHub</span><span class="skill-tag">JIRA</span><span class="skill-tag">Freshservice</span><span class="skill-tag">Zapier</span>
+            <span class="skill-tag">AWS</span><span class="skill-tag">Docker</span><span class="skill-tag">Kubernetes</span><span class="skill-tag">Helm charts</span><span class="skill-tag">Apache Airflow</span><span class="skill-tag">Linux</span><span class="skill-tag">Shell scripting</span><span class="skill-tag">CI/CD</span><span class="skill-tag">GitHub</span><span class="skill-tag">JIRA</span><span class="skill-tag">Freshservice</span><span class="skill-tag">Zapier</span>
           </div>
         </div>
         <div class="skill-category reveal reveal-delay-3" data-skill-group="delivery">
           <div class="skill-category-topline"><span>06</span><span class="skill-category-icon">◎</span></div>
           <h3>Reliability & quality</h3>
-          <p class="skill-category-note">Testing and operational habits that reduce surprises.</p>
+          <p class="skill-category-note">Tests and visibility for the time between shipping and fixing.</p>
           <div class="skill-tags">
             <span class="skill-tag">TDD</span><span class="skill-tag">Unit & integration tests</span><span class="skill-tag">Load testing</span><span class="skill-tag">Datadog</span><span class="skill-tag">Sentry</span><span class="skill-tag">Prometheus</span><span class="skill-tag">Axiom</span><span class="skill-tag">Observability</span><span class="skill-tag">Production debugging</span><span class="skill-tag">mTLS</span><span class="skill-tag">Circuit breakers</span><span class="skill-tag">System design</span>
+          </div>
+        </div>
+        <div class="skill-category reveal reveal-delay-1" data-skill-group="ai">
+          <div class="skill-category-topline"><span>07</span><span class="skill-category-icon">✳</span></div>
+          <h3>AI-assisted development</h3>
+          <p class="skill-category-note">Useful for sketching, reviewing, and debugging; the engineering calls stay mine.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Claude Code</span><span class="skill-tag">GitHub Copilot</span><span class="skill-tag">Cursor</span><span class="skill-tag">CodeRabbit</span>
           </div>
         </div>
       </div>
@@ -239,7 +254,7 @@
       <div class="section-header reveal">
         <div class="section-label">Career</div>
         <h2>Where I've <span class="gradient-text">worked</span></h2>
-        <p>Product engineering, platform work, and customer-facing production support</p>
+        <p>Platform controls, finance integrations, and search grounded in product data</p>
       </div>
       <div class="timeline">
         <!-- Delightree -->
@@ -252,15 +267,15 @@
                 <div class="timeline-company">Delightree</div>
               </div>
               <div class="timeline-meta">
-                <span class="timeline-date">Apr 2026 — Present</span>
+                <span class="timeline-date">Apr 2026 — Jul 2026</span>
                 <span class="timeline-location">📍 Bangalore</span>
               </div>
             </div>
             <ul class="timeline-bullets">
-              <li>Maintain Node.js services for a franchise management platform, working across GraphQL, MongoDB, and Redis-backed queues.</li>
-              <li>Debug GraphQL APIs and asynchronous workflows; handle customer-reported production issues through Freshservice.</li>
-              <li>Use Axiom for logs and production analysis, and support third-party automations through Zapier.</li>
-              <li>Use Java and BullMQ in backend work, with test-driven development and unit and integration tests.</li>
+              <li>Built MongoDB aggregation pipelines and used Google BigQuery to support product analytics.</li>
+              <li>Implemented RAG-powered AI search, retrieving relevant product information to answer user queries.</li>
+              <li>Worked across Node.js and Java services, GraphQL, and Redis-backed queues; investigated production issues with Axiom and Freshservice.</li>
+              <li>Used BullMQ for asynchronous jobs, Zapier for workflow integrations, and test-driven development with unit and integration tests.</li>
             </ul>
             <div class="timeline-tech">
               <span>Node.js</span><span>GraphQL</span><span>MongoDB</span><span>Redis</span><span>Java</span><span>BullMQ</span><span>TDD</span>
@@ -282,12 +297,11 @@
               </div>
             </div>
             <ul class="timeline-bullets">
-              <li>Built Node.js and Express API Gateway services; improved throughput and performance by 30%.</li>
-              <li>Designed MongoDB REST APIs and aggregation pipelines, and built routing and request transformation for service onboarding.</li>
-              <li>Integrated SOAP, GraphQL, and WebSocket services; used Python for event synchronization between microservices and RabbitMQ.</li>
-              <li>Investigated production issues end to end, shipped hotfixes, and added indexing, alerts, and validation to prevent repeat incidents.</li>
-              <li>Added Redis caching and circuit breakers, and ran load tests to check performance under demand.</li>
-              <li>Wrote functional, unit, and integration tests using a test-driven approach across the teams I joined.</li>
+              <li>Built Node.js and Express API Gateway features, including rate limiting and load balancing.</li>
+              <li>Designed REST APIs and MongoDB aggregation pipelines, and built routing and request transformation for service onboarding.</li>
+              <li>Implemented circuit breakers, Redis caching, and database sharding to handle failing dependencies, repeated reads, and growing data volume.</li>
+              <li>Used Python and RabbitMQ for event sync between microservices; connected SOAP, GraphQL, and WebSocket services.</li>
+              <li>Load-tested gateway workflows, debugged production issues, shipped hotfixes, and used test-driven development with unit and integration tests.</li>
             </ul>
             <div class="timeline-tech">
               <span>Node.js</span>
@@ -319,15 +333,15 @@
                 <div class="timeline-company">Byju's</div>
               </div>
               <div class="timeline-meta">
-                <span class="timeline-date">Jun 2021 — Apr 2023</span>
+                <span class="timeline-date">Jun 2021 — Mar 2023</span>
                 <span class="timeline-location">📍 Bangalore</span>
               </div>
             </div>
             <ul class="timeline-bullets">
-              <li>Shipped Node.js and React features for internal workflows and user-facing dashboards; built REST APIs used by high-traffic applications.</li>
-              <li>Built AWS Batch processing for more than 10,000 daily transactions and integrated enterprise systems through SOAP.</li>
-              <li>Worked on webhook and event-based payment flows, including Razorpay and Bajaj, plus integration tests for services and payment workflows.</li>
-              <li>Used RabbitMQ for communication between services and applied test-driven development with unit and integration tests.</li>
+              <li>Built features for the finance management system, covering invoices, credit notes, payments, and reconciliation workflows.</li>
+              <li>Integrated Cashfree, Razorpay, Bajaj, SAP, and courier services including Delhivery, Blue Dart, and DHL.</li>
+              <li>Supported more than 10,000 daily transactions through Node.js and AWS Batch; used Snappy and zlib compression to reduce database storage costs.</li>
+              <li>Built REST APIs and React dashboards, and wrote tests while using RabbitMQ for service-to-service communication.</li>
             </ul>
             <div class="timeline-tech">
               <span>Node.js</span>
@@ -345,27 +359,6 @@
               <span>TDD</span>
               <span>Unit & Integration Testing</span><span>Next.js</span>
             </div>
-          </div>
-        </div>
-        <!-- Adobe -->
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <div>
-                <div class="timeline-role">Software Technical Support Engineer</div>
-                <div class="timeline-company">Adobe</div>
-              </div>
-              <div class="timeline-meta">
-                <span class="timeline-date">Oct 2023 — May 2024</span>
-                <span class="timeline-location">📍 Bangalore</span>
-              </div>
-            </div>
-            <ul class="timeline-bullets">
-              <li>Resolved enterprise application, API, and infrastructure issues through log analysis and root-cause investigation.</li>
-              <li>Worked with Node.js services, Docker, Linux, and shell scripts to troubleshoot incidents and validate fixes.</li>
-            </ul>
-            <div class="timeline-tech"><span>Node.js</span><span>Docker</span><span>Linux</span><span>Shell</span><span>Splunk</span><span>Production Support</span></div>
           </div>
         </div>
       </div>
