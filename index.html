@@ -2,29 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fbfaf7">
+  <meta name="theme-color" content="#f7f7f4">
   <meta name="description" content="Sarvesh S builds backend systems, APIs, and useful things. Bengaluru, India.">
   <title>Sarvesh S — Backend engineer & builder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="rewind.css">
+  <link rel="stylesheet" href="portfolio-clean.css?v=1">
 </head>
 <body>
-  <main class="page">
-    <nav class="top-nav" aria-label="Main navigation"><a class="brand" href="#top">S<span>.</span></a><div><a href="#story">My story</a><a href="#work">My work</a><a href="#about">About me</a><a href="#contact">Let’s talk</a></div></nav>
+  <main class="page" id="top">
+    <nav class="top-nav" aria-label="Main navigation"><a class="brand" href="#top">Sarvesh<span>.</span></a><div><a href="#work">Work</a><a href="#experience">Experience</a><a href="#about">Toolkit</a><a href="#contact">Contact</a></div></nav>
     <header class="intro">
-      <p class="eyebrow">BENGALURU, INDIA <span>·</span> BACKEND ENGINEER</p><h1>Hi, I’m Sarvesh.</h1>
-      <p class="lede">A curious builder, rewinding through the systems I’ve helped make work.</p>
-      <div class="tv-stage" id="story">
-        <div class="year-mark" id="story-year">2026</div>
-        <div class="television" aria-label="Interactive timeline of my engineering work">
-          <div class="aerial"><i></i><i></i></div><div class="tv-shell"><div class="tv-screen"><span class="screen-label" id="screen-company">DELIGHTREE</span><strong id="screen-title">Search that knows the product</strong><p id="screen-copy">MongoDB pipelines, BigQuery analytics, and RAG search.</p><div class="screen-pulse"></div></div><div class="tv-controls"><i></i><i></i><b></b></div></div><div class="tv-legs"><i></i><i></i></div>
-        </div>
-        <div class="story-controls"><button id="rewind" type="button"><span aria-hidden="true">↶</span> Rewind my story</button><div class="story-dots" role="group" aria-label="Choose a career chapter"><button type="button" class="story-dot active" data-chapter="0" aria-label="Delightree, 2026"></button><button type="button" class="story-dot" data-chapter="1" aria-label="Yappes, 2024"></button><button type="button" class="story-dot" data-chapter="2" aria-label="BYJU’S, 2021"></button></div><span class="story-hint" id="story-hint">LATEST CHAPTER</span></div>
-      </div>
-      <p class="intro-copy">I like the parts of software that have to work when things get messy: a payment that needs to reconcile, a service that’s slowing down, data that needs to make sense. I stay with those problems until the fix feels simple to the person using it.</p>
-      <p class="day-job">Finance systems at <a href="#byjus">BYJU’S</a>. API infrastructure at <a href="#yappes">Yappes</a>. Analytics and AI search at <a href="#delightree">Delightree</a>.</p>
-      <div class="links"><a href="mailto:sarvesh19ricky@gmail.com">Email ↗</a><a href="https://github.com/sarveshricky19" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/sarvesh1999" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="Sarvesh_S_CV.pdf" download>CV ↓</a></div>
+      <div class="hero-copy"><p class="eyebrow"><span class="availability-dot"></span> BACKEND ENGINEER <span class="sep">·</span> BENGALURU, INDIA</p><h1>I build systems<br>people can <em>count on.</em></h1>
+      <p class="lede">I’m Sarvesh. I work across APIs, finance workflows, and data products—staying close to the details that make software dependable.</p>
+      <div class="hero-actions"><a class="button-primary" href="#work">Explore my work <span>↘</span></a><a class="button-link" href="Sarvesh_S_CV.pdf" download>Download CV ↓</a></div></div>
+      <aside class="hero-aside"><img src="avatar.png" alt="Sarvesh"><div class="aside-caption"><span>Currently building</span><strong>Analytics & AI search</strong><small>Most recently · Delightree</small></div><div class="aside-links"><a href="https://github.com/sarveshricky19" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/sarvesh1999" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></aside>
     </header>
 
     <section class="section personal-work" id="work">
@@ -35,7 +27,7 @@
       <p class="github-note">There’s more on <a href="https://github.com/sarveshricky19" target="_blank" rel="noreferrer">GitHub</a>—including the small experiments and unfinished ideas.</p>
     </section>
 
-    <section class="section work-history">
+    <section class="section work-history" id="experience">
       <h2>A few chapters of work</h2>
       <p class="section-intro">Different products, same curiosity about what happens under the hood.</p>
       <details id="delightree"><summary><span class="company">Delightree</span><span class="role">Analytics pipelines · AI search</span><time>Apr — Jul 2026</time></summary><div class="detail"><p>I built MongoDB aggregation pipelines with Google BigQuery for product analytics, and implemented AI search using retrieval-augmented generation (RAG). I also worked across Node.js and Java services, GraphQL, Redis and BullMQ.</p><div class="tags"><i>MongoDB</i><i>BigQuery</i><i>RAG</i><i>Node.js</i><i>Java</i></div></div></details>
@@ -54,6 +46,6 @@
 
     <footer id="contact"><p>If something here sounds useful, I’d love to hear from you.</p><div class="links"><a href="mailto:sarvesh19ricky@gmail.com">Email</a><a href="https://x.com/_Sarvesh19" target="_blank" rel="noreferrer">X</a><a href="https://open.substack.com/pub/isarvesh19" target="_blank" rel="noreferrer">Substack</a><a href="https://github.com/sarveshricky19" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.instagram.com/sarvesh.19" target="_blank" rel="noreferrer">Instagram</a></div><small>© 2026 Sarvesh S · Built by me, with care.</small></footer>
   </main>
-  <script src="script.js?v=78db116"></script>
+  <script src="script.js"></script>
 </body>
 </html>

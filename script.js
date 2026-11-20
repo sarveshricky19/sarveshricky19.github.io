@@ -30,34 +30,3 @@ async function loadSubstack() {
   }
 }
 document.addEventListener('DOMContentLoaded', loadSubstack);
-
-const chapters = [
-  { year:'2026', hint:'CHAPTER 1 · NOW', company:'DELIGHTREE', title:'Search that knows the product', copy:'MongoDB pipelines, BigQuery analytics, and RAG search.', target:'delightree' },
-  { year:'2024', hint:'CHAPTER 2 · THE GATEWAY YEARS', company:'YAPPES', title:'Keeping traffic moving', copy:'Rate limits, load balancing, circuit breakers, caching, and sharding.', target:'yappes' },
-  { year:'2021', hint:'CHAPTER 3 · WHERE IT STARTED', company:'BYJU’S', title:'Making the money add up', copy:'Invoices, credit notes, payments, and the integrations behind them.', target:'byjus' }
-];
-document.addEventListener('DOMContentLoaded', () => {
-  const year = document.getElementById('story-year');
-  const company = document.getElementById('screen-company');
-  const title = document.getElementById('screen-title');
-  const copy = document.getElementById('screen-copy');
-  const hint = document.getElementById('story-hint');
-  const dots = [...document.querySelectorAll('[data-chapter]')];
-  const rewind = document.getElementById('rewind');
-  if (!year || !company || !title || !copy || !hint || !rewind) return;
-  let active = 0;
-  const showChapter = index => {
-    active = (index + chapters.length) % chapters.length;
-    const chapter = chapters[active];
-    year.textContent = chapter.year;
-    company.textContent = chapter.company;
-    title.textContent = chapter.title;
-    copy.textContent = chapter.copy;
-    hint.textContent = chapter.hint;
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === active));
-    const section = document.getElementById(chapter.target);
-    if (section) section.open = true;
-  };
-  rewind.addEventListener('click', () => showChapter(active + 1));
-  dots.forEach(dot => dot.addEventListener('click', () => showChapter(Number(dot.dataset.chapter))));
-});
