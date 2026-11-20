@@ -11,17 +11,23 @@
 </head>
 <body>
   <main class="page">
+    <nav class="top-nav" aria-label="Main navigation"><a class="brand" href="#top">S<span>.</span></a><div><a href="#story">My story</a><a href="#work">My work</a><a href="#about">About me</a><a href="#contact">Let’s talk</a></div></nav>
     <header class="intro">
-      <div class="portrait-wrap"><img src="avatar.png" alt="Sarvesh"></div>
-      <p class="eyebrow">Bengaluru, India <span>·</span> Backend engineer</p>
-      <h1>Hi, I’m Sarvesh.</h1>
-      <p class="lede">I like making complicated systems feel dependable.</p>
-      <p class="intro-copy">I’m drawn to the parts of software that have to work when things get messy: a payment that needs to reconcile, a service that’s slowing down, data that needs to make sense. I like staying with those problems until the fix feels simple to the person using it.</p>
-      <p class="day-job">That’s taken me from finance systems at <a href="#byjus">BYJU’S</a>, to API infrastructure at <a href="#yappes">Yappes</a>, to analytics and AI search at <a href="#delightree">Delightree</a>.</p>
+      <p class="eyebrow">BENGALURU, INDIA <span>·</span> BACKEND ENGINEER</p><h1>Hi, I’m Sarvesh.</h1>
+      <p class="lede">A curious builder, rewinding through the systems I’ve helped make work.</p>
+      <div class="tv-stage" id="story">
+        <div class="year-mark" id="story-year">2026</div>
+        <div class="television" aria-label="Interactive timeline of my engineering work">
+          <div class="aerial"><i></i><i></i></div><div class="tv-shell"><div class="tv-screen"><span class="screen-label" id="screen-company">DELIGHTREE</span><strong id="screen-title">Search that knows the product</strong><p id="screen-copy">MongoDB pipelines, BigQuery analytics, and RAG search.</p><div class="screen-pulse"></div></div><div class="tv-controls"><i></i><i></i><b></b></div></div><div class="tv-legs"><i></i><i></i></div>
+        </div>
+        <div class="story-controls"><button id="rewind" type="button"><span aria-hidden="true">↶</span> Rewind my story</button><div class="story-dots" role="group" aria-label="Choose a career chapter"><button type="button" class="story-dot active" data-chapter="0" aria-label="Delightree, 2026"></button><button type="button" class="story-dot" data-chapter="1" aria-label="Yappes, 2024"></button><button type="button" class="story-dot" data-chapter="2" aria-label="BYJU’S, 2021"></button></div><span class="story-hint" id="story-hint">LATEST CHAPTER</span></div>
+      </div>
+      <p class="intro-copy">I like the parts of software that have to work when things get messy: a payment that needs to reconcile, a service that’s slowing down, data that needs to make sense. I stay with those problems until the fix feels simple to the person using it.</p>
+      <p class="day-job">Finance systems at <a href="#byjus">BYJU’S</a>. API infrastructure at <a href="#yappes">Yappes</a>. Analytics and AI search at <a href="#delightree">Delightree</a>.</p>
       <div class="links"><a href="mailto:sarvesh19ricky@gmail.com">Email ↗</a><a href="https://github.com/sarveshricky19" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/sarvesh1999" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="Sarvesh_S_CV.pdf" download>CV ↓</a></div>
     </header>
 
-    <section class="section personal-work">
+    <section class="section personal-work" id="work">
       <h2>Some things I’ve built</h2>
       <p class="section-intro">A couple of projects I’ve enjoyed taking from idea to something people can use.</p>
       <a class="project" href="https://logisense-production.up.railway.app" target="_blank" rel="noreferrer"><span class="project-index">01</span><span class="project-copy"><strong>LogiSense</strong><small>Shipment workflows, route assignment, and live tracking for logistics operations.</small></span><span class="project-stack">Node.js · PostgreSQL · WebSockets</span><span class="arrow">↗</span></a>
@@ -37,7 +43,7 @@
       <details id="byjus"><summary><span class="company">BYJU’S</span><span class="role">Finance systems · Integrations</span><time>Jun 2021 — Mar 2023</time></summary><div class="detail"><p>I was part of the finance management team, working on invoices, credit notes, payments, and reconciliation. I integrated Cashfree, Razorpay, Bajaj, SAP, and courier partners Delhivery, Blue Dart, and DHL. I also used Snappy and zlib compression to reduce database storage costs, and supported systems processing 10,000+ daily transactions.</p><div class="tags"><i>Payments</i><i>SAP</i><i>AWS</i><i>RabbitMQ</i><i>Snappy / zlib</i><i>Node.js</i></div></div></details>
     </section>
 
-    <section class="section toolkit">
+    <section class="section toolkit" id="about">
       <h2>Things I reach for</h2><p class="section-intro">A practical toolkit built by shipping and supporting software.</p>
       <div class="tool-groups"><div><b>Build</b><p>Node.js, JavaScript, TypeScript, Python, Java, REST, GraphQL, microservices</p></div><div><b>Data & messaging</b><p>MongoDB, PostgreSQL, MySQL, Redis, BigQuery, RabbitMQ, BullMQ, Airflow</p></div><div><b>Systems</b><p>AWS, Docker, Kubernetes, Helm charts, Linux, shell scripting, API gateways</p></div><div><b>How I work</b><p>TDD, unit and integration tests, load testing, production debugging, CI/CD</p></div><div><b>AI in the loop</b><p>RAG search, Claude Code, Copilot, Cursor, CodeRabbit</p></div></div>
     </section>
@@ -46,7 +52,7 @@
 
     <section class="section offscreen"><h2>Outside the work</h2><p>Outside work, I save little moments from Bengaluru and wherever I get to travel. My Instagram bio has the shorter version of me; the feed has the rest.</p><a class="instagram" href="https://www.instagram.com/sarvesh.19" target="_blank" rel="noreferrer"><img src="avatar.png" alt="Sarvesh’s Instagram profile photo"><span><b>@sarvesh.19</b><small>Find me on Instagram ↗</small></span></a></section>
 
-    <footer><p>If something here sounds useful, I’d love to hear from you.</p><div class="links"><a href="mailto:sarvesh19ricky@gmail.com">Email</a><a href="https://x.com/_Sarvesh19" target="_blank" rel="noreferrer">X</a><a href="https://open.substack.com/pub/isarvesh19" target="_blank" rel="noreferrer">Substack</a><a href="https://github.com/sarveshricky19" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.instagram.com/sarvesh.19" target="_blank" rel="noreferrer">Instagram</a></div><small>© 2026 Sarvesh S · Built by me, with care.</small></footer>
+    <footer id="contact"><p>If something here sounds useful, I’d love to hear from you.</p><div class="links"><a href="mailto:sarvesh19ricky@gmail.com">Email</a><a href="https://x.com/_Sarvesh19" target="_blank" rel="noreferrer">X</a><a href="https://open.substack.com/pub/isarvesh19" target="_blank" rel="noreferrer">Substack</a><a href="https://github.com/sarveshricky19" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.instagram.com/sarvesh.19" target="_blank" rel="noreferrer">Instagram</a></div><small>© 2026 Sarvesh S · Built by me, with care.</small></footer>
   </main>
   <script src="script.js"></script>
 </body>
