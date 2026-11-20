@@ -3,16 +3,25 @@ async function loadSubstack() {
   if (!grid) return;
   try {
     const feed = 'https://isarvesh19.substack.com/feed';
-    const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed)}`);
+    // Substack's RSS feed doesn't permit cross-origin browser requests. Fetch
+    // the public XML through a CORS-enabled proxy, then render text-only fields.
+    const response = await fetch(`https://proxy.cors.dev/${feed}`, { headers: { Accept: 'application/rss+xml, application/xml, text/xml' } });
     if (!response.ok) throw new Error('Feed unavailable');
-    const data = await response.json();
-    if (!data.items?.length) throw new Error('No posts yet');
-    grid.replaceChildren(...data.items.slice(0, 3).map(item => {
+    const xml = new DOMParser().parseFromString(await response.text(), 'application/xml');
+    if (xml.querySelector('parsererror')) throw new Error('Invalid feed');
+    const items = [...xml.querySelectorAll('channel > item')];
+    if (!items.length) {
+      const empty = document.createElement('p'); empty.className = 'section-intro';
+      empty.textContent = 'No public posts on the feed just yet. When I publish, they’ll show up here.';
+      grid.replaceChildren(empty); return;
+    }
+    grid.replaceChildren(...items.slice(0, 4).map(item => {
       const link = document.createElement('a');
-      link.className = 'feed-card'; link.href = item.link; link.target = '_blank'; link.rel = 'noreferrer';
-      const title = document.createElement('strong'); title.textContent = item.title;
+      const url = item.querySelector('link')?.textContent?.trim() || 'https://open.substack.com/pub/isarvesh19';
+      link.className = 'feed-card'; link.href = url; link.target = '_blank'; link.rel = 'noreferrer';
+      const title = document.createElement('strong'); title.textContent = item.querySelector('title')?.textContent?.trim() || 'Read on Substack';
       const date = document.createElement('small');
-      const parsed = new Date(item.pubDate); date.textContent = Number.isNaN(parsed.valueOf()) ? 'Read on Substack ↗' : `${parsed.toLocaleDateString(undefined, { month: 'short', year: 'numeric' })} · Read on Substack ↗`;
+      const parsed = new Date(item.querySelector('pubDate')?.textContent || ''); date.textContent = Number.isNaN(parsed.valueOf()) ? 'Read on Substack ↗' : `${parsed.toLocaleDateString(undefined, { month: 'short', year: 'numeric' })} · Read on Substack ↗`;
       link.append(title, date); return link;
     }));
   } catch {
